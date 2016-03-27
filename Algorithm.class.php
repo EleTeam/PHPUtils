@@ -88,36 +88,4 @@ class Algorithm {
         }
         return $arr;
     }
-
-    //获取文件夹里的文件及其子文件
-    public static function listDir($dir, $show=true) {
-        if (!is_dir($dir))
-            return;
-
-        $files = array();
-        $handle = opendir($dir);
-        if (!$handle)
-            return;
-
-        if ($show)
-            echo $dir . "<br>";
-
-        $files[] = $dir;
-        while (($file = readdir($handle)) !== false) {
-            if ($file == '.' || $file == '..')
-                continue;
-            $file = $dir . '/' . $file;
-            if (is_dir($file)) {
-                $files[] = self::listDir($file);
-            } else {
-                $files[] = $file;
-
-                if ($show)
-                    echo $file . "<br>";
-            }
-        }
-
-        closedir($handle);
-        return $files;
-    }
 }
