@@ -88,4 +88,20 @@ class Algorithm {
         }
         return $arr;
     }
+
+    //斐波那契数列(兔子数列）：从第2项开始，每一项都等于前两项之和。如：0, 1, 1, 2, 3, 5, 8, 13, 21, 34...
+    public static function fibo($count) {
+        $arr = array();
+        if ($count <= 1) {
+            $arr[] = 0;
+            return $arr;
+        }
+
+        $arr[] = 0;
+        $arr[] = 1;
+        for ($i=2; $i<$count; $i++) {
+            $arr[] = $arr[$i-1] + $arr[$i-2];
+        }
+        return $arr;
+    }
 }
